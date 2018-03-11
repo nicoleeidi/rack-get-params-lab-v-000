@@ -19,9 +19,9 @@ class Application
       resp.write handle_search(search_term)
     elsif req.path.match(/add/)
       search_term = req.params["item"]
-      
+
         @@cart << item if @@items.include?(item)
-    
+
     else
       resp.write "Path Not Found"
     end
