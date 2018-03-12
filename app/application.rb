@@ -12,14 +12,16 @@ class Application
         resp.write "#{item}\n"
       end
     end
-      if req.path.match(/cart/)
-        @@cart.each do |item|
+      if req.path.match(/cart/) #this would mean to do it everytime its in the path. 
+        if !@@cart.empty?
+          @@cart.each do |item|
           resp.write "#{item}\n"
         end
       else
         resp.write "Your cart is empty"
           #empty cart messge
       end
+    end 
     if req.path.match(/search/)
       search_term = req.params["q"]
       resp.write handle_search(search_term)
